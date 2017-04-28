@@ -77,7 +77,8 @@
 						<notebook>
 							<page string="Enrollment Lines">
 								<field name="ac_enrollment_line_ids" nolabel="1" 
-									attrs="{'readonly': [('state','not in',('draft','sent'))]}" >
+									attrs="{'readonly': [('state','not in',('draft','sent'))]}"
+									context="{'enrollment_time': enrollment_time}">
 									<tree string="Subject Lines" editable="bottom" create="false">
 										<field name="subject_id"
 											on_change="onchange_subject_id(parent.partner_id, subject_id, parent.enrollment_time, parent.enrollment_date)"/>
@@ -86,7 +87,7 @@
 										<field name="enrollment_price" readonly="1" />
 										<field name="tariff_price" readonly="1" />
 										<field name="repeat_registration"
-											on_change="onchange_repeat_registration(standard_id, repeat_registration )"/>
+											on_change="onchange_repeat_registration(standard_id, repeat_registration, context)"/>
 										<field name="additional_price" readonly="1"/>
 										<field name="amount" readonly="1"/>
 									</tree>
