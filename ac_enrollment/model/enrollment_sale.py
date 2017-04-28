@@ -788,12 +788,17 @@ class enrollment_sale_line(osv.Model):
         :param repeat_registration:
         :param context:
         '''
+        if context is None:
+            context = {}
         result = {'additional_price': 0.0 }
         if repeat_registration == 'first' or not standard_id:
             return {'value': result}
         standard = self.pool.get('op.standard').browse(cr, uid, standard_id, context)
         product = standard.course_id.aditional_product_id
-        pricelist = standard.property_product_pricelist
+        if context.get('enrollment_time') == 'ordinary':
+            pricelist = standard.property_product_pricelist
+        elif context.get('enrollment_time') == 'extraordinary':
+            pricelist = standard.extra_property_product_pricelist
         result = {}
         warning = {}        
         warning_msgs = ''
