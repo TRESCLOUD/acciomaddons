@@ -760,7 +760,9 @@ class enrollment_sale_line(osv.Model):
             warning_msgs += _("No Pricelist ! : ") + warn_msg +"\n\n"
         else:
             for product_type, product in products.iteritems():
-                price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist.id], product.id, subject.credits)[pricelist.id]
+                ctxt = context.copy()
+                ctxt.update(date=date_order)
+                price = self.pool.get('product.pricelist').price_get(cr, uid, [pricelist.id], product.id, subject.credits, context=ctxt)[pricelist.id]
                 if price is False:
                     warn_msg = _("Cannot find a pricelist line matching this product and quantity.\n"
                             "You have to change either the product, the quantity or the pricelist.")
