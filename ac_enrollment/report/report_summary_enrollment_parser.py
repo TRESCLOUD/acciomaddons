@@ -56,6 +56,8 @@ class Parser(report_sxw.rml_parse):
             name = ''
             if value == 'm':
                 name = 'Matutino'
+            elif value == 'i':
+                name = 'Intermedio'
             else:
                name = 'Vespertino'
             return name 
