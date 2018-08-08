@@ -146,7 +146,9 @@
 					<filter name="extraordinary" string="Extraordinary"
 						domain="[('enrollment_time','=','extraordinary')]"/>						
 					<filter name="matutino" string="Matutino"
-						domain="[('school_day','=','m')]"/>						
+						domain="[('school_day','=','m')]"/>
+					<filter name="intermedio" string="Intermedio"
+						domain="[('school_day','=','i')]"/>
 					<filter name="vespertino" string="Vespertino"
 						domain="[('school_day','=','e')]"/>
 					<field name="name"/>						
