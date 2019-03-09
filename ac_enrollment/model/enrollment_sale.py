@@ -685,6 +685,14 @@ class enrollment_sale_line(osv.Model):
                                           'Order Lines', help=''),
         'invoice_line_ids':fields.many2many('account.invoice.line', 'rel_enrollment_line_invoice_line', 'enrollment_line_id', 'invoice_line_id', 
                                           'Invoice Lines', help=''),
+        'enrollment_date': fields.related(
+            'enrollment_sale_id', 'enrollment_date',
+            string=u'Fecha Matrícula',
+            type='date',
+            method=True,
+            store=True,
+            help=u''
+            )
     }
 
     _defaults = {
